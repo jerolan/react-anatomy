@@ -1,0 +1,115 @@
+{
+  "name": "react-anatomy",
+  "version": "1.2.0",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "private": false,
+  "dependencies": {
+    "styled-components": "^4.4.1"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "scripts": {
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "storybook-build": "build-storybook --output-dir docs",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "react-scripts test --watchAll=false",
+    "coverage": "yarn test -- --coverage",
+    "semantic-release": "semantic-release",
+    "commit": "npx git-cz"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/stories"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/commit-analyzer": "^6.3.3",
+    "@semantic-release/git": "^7.0.18",
+    "@semantic-release/npm": "^5.3.4",
+    "@semantic-release/release-notes-generator": "^7.3.5",
+    "@storybook/react": "^5.2.8",
+    "@types/jest": "24.0.23",
+    "@types/node": "12.12.18",
+    "@types/react": "16.9.16",
+    "@types/react-dom": "16.9.4",
+    "@types/react-test-renderer": "^16.9.1",
+    "@types/styled-components": "4.4.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "cz-conventional-changelog": "3.0.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-scripts": "3.3.0",
+    "react-test-renderer": "^16.12.0",
+    "semantic-release": "^15.13.31",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jerolan/react-anatomy.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/npm"
+    ]
+  }
+}
